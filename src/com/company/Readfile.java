@@ -6,22 +6,24 @@ import java.util.*;
 //import java.util.Arrays;
 
 public class Readfile {
-    ArrayList<String> result;
+    //ArrayList<String> result;
 
 
 
-    public ArrayList<ArrayList<String>> readText() throws FileNotFoundException {
+    public String[][] readText() throws FileNotFoundException {
 
-        ArrayList<ArrayList<String>> listItem = new ArrayList<ArrayList<String>>();
-        //ArrayList<String> title = new ArrayList<String>();
+        ArrayList<ArrayList<String>> listItem = new ArrayList<>();
+
         //var file = new File;
         Scanner read = new Scanner(new File("C:\\Users\\maian\\Assign2\\src\\inputText.txt"));
         while (read.hasNext()) {
 
             String data = read.nextLine();
-            listItem.add(new ArrayList<String>(Arrays.asList(data)));
+            //listItem.add(new ArrayList<String>(Arrays.asList(data.split("(?=,)"))));
+            listItem.add(new ArrayList<>(Arrays.asList(data.split("[,]"))));
             //print the element
         }
+            String[][] stringarr = listItem.stream().map(u -> u.toArray(new String[0])).toArray(String[][]::new);
 
 
 //        for (int i = 0; i < listItem.size(); i++) {
@@ -39,7 +41,33 @@ public class Readfile {
 //            }
 //
 //        }
-        return listItem;
+        return stringarr;
+    }
+
+    public static int[] findIndex(String stringArr[][],
+                                  String keyString) {
+        // initialising result array to -1 in case keyString
+        // is not found
+
+       int result[] = new int[2];
+        // iteration over all the elements of the 2-D array
+        // rows
+        for (int i = 0; i < stringArr.length; i++) {
+
+            // columns
+            for (int j = 0; j < stringArr[i].length; j++) {
+
+
+                // if keyString is found
+                if (stringArr[i][j].equals(keyString)) {
+                    result[0] = i;
+                    result[1] = j;
+                    return result;
+                }
+            }
+        }
+        // if keyString is not found then -1 is returned
+        return result;
     }
 }
 
