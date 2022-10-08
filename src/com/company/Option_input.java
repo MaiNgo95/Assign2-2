@@ -20,7 +20,7 @@ public class Option_input {
             int getInput = enterInput.nextInt();
 
             if (getInput == 1) {
-                System.out.println("come to 1");
+                System.out.println("Read the input data");
                 ;
             } else if (getInput == 2) {
                 System.out.println("Delete a new course");
@@ -32,17 +32,30 @@ public class Option_input {
 //                insertCourse.printDList(insertCourse.head);
             } else if (getInput == 3) {
                 System.out.println("Insert a new course");
+                Scanner enterNoCourse = new Scanner(System.in);
+                String takeNoCourse = enterNoCourse.nextLine();
+                System.out.println("Enter the new course name for" + takeNoCourse + ": ");
+                Scanner enterNameCourse = new Scanner(System.in);
+                String takeNameCourse = enterNameCourse.nextLine();
+
+                DoubleLL insertCourse = new DoubleLL();
+                insertCourse.add(takeNoCourse, takeNameCourse); //add new node new course
+
+
             } else if (getInput == 4) {
-                System.out.println("Transfer a student from one course to another");
+                System.out.println("Delete a student");
             } else if (getInput == 5) {
-                System.out.println("come to 2");
+                System.out.println("Insert new student");
             } else if (getInput == 6) {
-                System.out.println("come to 2");
+                System.out.println("Transfer a student from one course to another");
             } else if (getInput == 7) {
-                System.out.println("come to 2");
+                System.out.println("Display the course list");
+                DoubleLL printCourse = new DoubleLL();
+                printCourse.printDList(printCourse.head.next);
             } else if (getInput == 8) {
-                System.out.println("come to 2");
+                System.out.println("Display the student list");
             } else if (getInput == 9) {
+                System.out.println("Exit");
                 break;
             }
 
